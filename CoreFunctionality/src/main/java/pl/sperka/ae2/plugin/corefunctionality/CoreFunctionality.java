@@ -6,10 +6,11 @@ import pl.sperka.ae2.plugin.corefunctionality.circuits.LM3xx;
 import pl.sperka.ae2.plugin.corefunctionality.circuits.NE555;
 import pl.sperka.ae2.plugin.corefunctionality.circuits.OpAmps;
 import pl.sperka.ae2.plugin.corefunctionality.convert.*;
+import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.AvrCalc;
+import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.BitmapFontGenerator.FontGen;
 import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.GraphicalLcdImageGenerator.GraphLcdPict;
 import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.Hd44780CharacterGenerator.HD44780CharGen;
 import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.SevenSegmentDisplay._7SegGen;
-import pl.sperka.ae2.plugin.oldclasses.microcontrollers.*;
 import pl.sperka.ae2.plugins.ICore;
 import pl.sperka.ae2.plugins.IPlugin;
 
@@ -135,7 +136,7 @@ public class CoreFunctionality implements IPlugin {
         var tabMicrocontrollers = core.GetTabByName( strings.getString( "plugin.tab.microcontrollers" ) );
 
         var avrCalculatorsButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.avr-calculators" ) );
-        avrCalculatorsButton.addActionListener( e -> new AVRKalk( core.GetParentComponent() ).setVisible( true ) );
+        avrCalculatorsButton.addActionListener( e -> new AvrCalc( core.GetParentComponent() ).setVisible( true ) );
 
         var bitmapFontGeneratorButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.bitmap-font-generator" ) );
         bitmapFontGeneratorButton.addActionListener( e -> new FontGen( core.GetParentComponent() ).setVisible( true ) );

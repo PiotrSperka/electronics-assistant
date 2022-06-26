@@ -1,4 +1,4 @@
-package pl.sperka.ae2.plugin.oldclasses.microcontrollers;
+package pl.sperka.ae2.plugin.corefunctionality.microcontrollers.BitmapFontGenerator;
 
 /************************************************************
  * Copyright 2004-2005,2007-2008 Masahiko SAWAI All Rights Reserved. 
