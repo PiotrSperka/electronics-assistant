@@ -62,7 +62,7 @@ public class MainWindow extends JFrame implements ICore {
         ep.addHyperlinkListener( e -> {
             if ( e.getEventType().equals( HyperlinkEvent.EventType.ACTIVATED ) ) {
                 try {
-                    Desktop.getDesktop().browse( e.getURL().toURI() ); // roll your own link launcher or use Desktop if J6+
+                    Desktop.getDesktop().browse( e.getURL().toURI() );
                 } catch ( IOException | URISyntaxException ex ) {
                     logger.error( ex.getMessage(), ex );
                 }

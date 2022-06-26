@@ -2,8 +2,13 @@ package pl.sperka.ae2.plugin.corefunctionality;
 
 import com.google.auto.service.AutoService;
 import pl.sperka.ae2.plugin.corefunctionality.calculate.*;
-import pl.sperka.ae2.plugin.oldclasses.circuits.*;
-import pl.sperka.ae2.plugin.oldclasses.convert.*;
+import pl.sperka.ae2.plugin.corefunctionality.circuits.LM3xx;
+import pl.sperka.ae2.plugin.corefunctionality.circuits.NE555;
+import pl.sperka.ae2.plugin.corefunctionality.circuits.OpAmps;
+import pl.sperka.ae2.plugin.corefunctionality.convert.*;
+import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.GraphicalLcdImageGenerator.GraphLcdPict;
+import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.Hd44780CharacterGenerator.HD44780CharGen;
+import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.SevenSegmentDisplay._7SegGen;
 import pl.sperka.ae2.plugin.oldclasses.microcontrollers.*;
 import pl.sperka.ae2.plugins.ICore;
 import pl.sperka.ae2.plugins.IPlugin;
@@ -99,27 +104,27 @@ public class CoreFunctionality implements IPlugin {
         var tabConvert = core.GetTabByName( strings.getString( "plugin.tab.convert" ) );
 
         var frequencyPeriodButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.frequency-period" ) );
-        frequencyPeriodButton.addActionListener( e -> new CzestotOkres( core.GetParentComponent() ).setVisible( true ) );
+        frequencyPeriodButton.addActionListener( e -> new FrequencyPeriod( core.GetParentComponent() ).setVisible( true ) );
 
         var wattsDbmButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.watts-dbm" ) );
-        wattsDbmButton.addActionListener( e -> new WatDbm( core.GetParentComponent() ).setVisible( true ) );
+        wattsDbmButton.addActionListener( e -> new WattDbm( core.GetParentComponent() ).setVisible( true ) );
 
         var orderOfMagnitudeButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.order-of-magnitude" ) );
-        orderOfMagnitudeButton.addActionListener( e -> new PrzelJedn( core.GetParentComponent() ).setVisible( true ) );
+        orderOfMagnitudeButton.addActionListener( e -> new OrderOfMagnitude( core.GetParentComponent() ).setVisible( true ) );
 
         var numericalSystemsButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.numerical-systems" ) );
-        numericalSystemsButton.addActionListener( e -> new SystLiczb( core.GetParentComponent() ).setVisible( true ) );
+        numericalSystemsButton.addActionListener( e -> new NumericalSystems( core.GetParentComponent() ).setVisible( true ) );
 
         var barCodesButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.bar-codes" ) );
-        barCodesButton.addActionListener( e -> new KodyPaskowe( core.GetParentComponent() ).setVisible( true ) );
+        barCodesButton.addActionListener( e -> new BarCodes( core.GetParentComponent() ).setVisible( true ) );
 
         var milCodeButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.mil-code" ) );
-        milCodeButton.addActionListener( e -> new MIL( core.GetParentComponent() ).setVisible( true ) );
+        milCodeButton.addActionListener( e -> new Mil( core.GetParentComponent() ).setVisible( true ) );
 
         var tabCircuits = core.GetTabByName( strings.getString( "plugin.tab.circuits" ) );
 
         var opAmpCircuitsButton = addButtonToPanel( tabCircuits, strings.getString( "plugin.tab.circuits.op-amp-circuits" ) );
-        opAmpCircuitsButton.addActionListener( e -> new OPampy( core.GetParentComponent() ).setVisible( true ) );
+        opAmpCircuitsButton.addActionListener( e -> new OpAmps( core.GetParentComponent() ).setVisible( true ) );
 
         var lm3xxCircuitsButton = addButtonToPanel( tabCircuits, strings.getString( "plugin.tab.circuits.lm3xx-circuits" ) );
         lm3xxCircuitsButton.addActionListener( e -> new LM3xx( core.GetParentComponent() ).setVisible( true ) );
