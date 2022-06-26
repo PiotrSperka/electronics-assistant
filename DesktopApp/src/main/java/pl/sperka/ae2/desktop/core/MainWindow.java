@@ -7,9 +7,11 @@ import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 public class MainWindow extends JFrame implements ICore {
@@ -99,9 +101,21 @@ public class MainWindow extends JFrame implements ICore {
         return this;
     }
 
+    public static void setUIFontSize( int size ) {
+        Enumeration< Object > keys = UIManager.getDefaults().keys();
+        while ( keys.hasMoreElements() ) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get( key );
+            if ( value instanceof FontUIResource ) {
+                UIManager.put( key, ( (FontUIResource) value ).deriveFont( ( (FontUIResource) value ).getStyle(), 13 ) );
+            }
+        }
+    }
+
     public static void main( String[] args ) {
         EventQueue.invokeLater( () -> {
             FlatLightLaf.setup();
+            setUIFontSize( 13 );
             new MainWindow().setVisible( true );
         } );
     }

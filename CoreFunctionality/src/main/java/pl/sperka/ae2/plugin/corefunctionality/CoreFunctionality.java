@@ -1,7 +1,7 @@
 package pl.sperka.ae2.plugin.corefunctionality;
 
 import com.google.auto.service.AutoService;
-import pl.sperka.ae2.plugin.oldclasses.calculate.*;
+import pl.sperka.ae2.plugin.corefunctionality.calculate.*;
 import pl.sperka.ae2.plugin.oldclasses.circuits.*;
 import pl.sperka.ae2.plugin.oldclasses.convert.*;
 import pl.sperka.ae2.plugin.oldclasses.microcontrollers.*;
@@ -76,25 +76,25 @@ public class CoreFunctionality implements IPlugin {
         var tabCalculate = core.GetTabByName( strings.getString( "plugin.tab.calculate" ) );
 
         var ledButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.led-resistor" ) );
-        ledButton.addActionListener( e -> new RezystorLED( core.GetParentComponent() ).setVisible( true ) );
+        ledButton.addActionListener( e -> new ResistorForLed( core.GetParentComponent() ).setVisible( true ) );
 
         var combinedResistanceButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.combined-resistance" ) );
-        combinedResistanceButton.addActionListener( e -> new RezZast( core.GetParentComponent() ).setVisible( true ) );
+        combinedResistanceButton.addActionListener( e -> new CombinedResistance( core.GetParentComponent() ).setVisible( true ) );
 
         var uipButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.voltage-current-power" ) );
-        uipButton.addActionListener( e -> new NapNatMoc( core.GetParentComponent() ).setVisible( true ) );
+        uipButton.addActionListener( e -> new VoltageCurrentPower( core.GetParentComponent() ).setVisible( true ) );
 
         var voltageDividerButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.voltage-divider" ) );
-        voltageDividerButton.addActionListener( e -> new DzielnikNap( core.GetParentComponent() ).setVisible( true ) );
+        voltageDividerButton.addActionListener( e -> new VoltageDivider( core.GetParentComponent() ).setVisible( true ) );
 
         var radiatorParametersButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.radiator-parameters" ) );
         radiatorParametersButton.addActionListener( e -> new Radiator( core.GetParentComponent() ).setVisible( true ) );
 
         var coilInductanceButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.coil-inductance" ) );
-        coilInductanceButton.addActionListener( e -> new Cewki( core.GetParentComponent() ).setVisible( true ) );
+        coilInductanceButton.addActionListener( e -> new Coils( core.GetParentComponent() ).setVisible( true ) );
 
         var closestESeriesValueButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.closest-e-series-value" ) );
-        closestESeriesValueButton.addActionListener( e -> new Szeregi( core.GetParentComponent() ).setVisible( true ) );
+        closestESeriesValueButton.addActionListener( e -> new ESeries( core.GetParentComponent() ).setVisible( true ) );
 
         var tabConvert = core.GetTabByName( strings.getString( "plugin.tab.convert" ) );
 
