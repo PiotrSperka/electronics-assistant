@@ -3,6 +3,7 @@ package pl.sperka.ae2.plugin.corefunctionality.microcontrollers.Hd44780Character
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.sperka.ae2.plugin.corefunctionality.microcontrollers.SevenSegmentDisplay._7SegGen;
+import pl.sperka.ae2.plugins.ICore;
 
 import java.awt.*;
 import java.util.ResourceBundle;
@@ -18,11 +19,12 @@ public class HD44780CharGen extends javax.swing.JFrame {
     private javax.swing.JLabel jlInfo;
     private javax.swing.JTextArea jtaResult;
 
-    public HD44780CharGen( Component parent ) {
+    public HD44780CharGen( ICore core ) {
         initComponents();
         LcdCell.setPreview( LcdPreview );
         jlInfo.setText( strings.getString( "hd44780-char-gen.click-to-change" ) );
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void showData() {

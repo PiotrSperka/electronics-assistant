@@ -6,8 +6,8 @@ package pl.sperka.ae2.plugin.corefunctionality.calculate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
-import java.awt.*;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -25,9 +25,10 @@ public class ResistorForLed extends javax.swing.JFrame {
     private javax.swing.JTextField txtUled;
     private javax.swing.JTextField txtUzas;
 
-    public ResistorForLed( Component parent ) {
+    public ResistorForLed( ICore core ) {
         initComponents();
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

@@ -24,8 +24,6 @@ import java.util.ResourceBundle;
 public class CoreFunctionality implements IPlugin {
     private static final ResourceBundle strings = ResourceBundle.getBundle( "pl.sperka.ae2.plugin.corefunctionality.Strings" );
 
-    private ICore core = null;
-
     @Override
     public String getName() {
         return strings.getString( "plugin.name" );
@@ -77,78 +75,76 @@ public class CoreFunctionality implements IPlugin {
 
     @Override
     public Boolean initialize( ICore core ) {
-        this.core = core;
-
-        var tabCalculate = core.GetTabByName( strings.getString( "plugin.tab.calculate" ) );
+        var tabCalculate = core.getTabByName( strings.getString( "plugin.tab.calculate" ) );
 
         var ledButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.led-resistor" ) );
-        ledButton.addActionListener( e -> new ResistorForLed( core.GetParentComponent() ).setVisible( true ) );
+        ledButton.addActionListener( e -> new ResistorForLed( core ).setVisible( true ) );
 
         var combinedResistanceButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.combined-resistance" ) );
-        combinedResistanceButton.addActionListener( e -> new CombinedResistance( core.GetParentComponent() ).setVisible( true ) );
+        combinedResistanceButton.addActionListener( e -> new CombinedResistance( core ).setVisible( true ) );
 
         var uipButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.voltage-current-power" ) );
-        uipButton.addActionListener( e -> new VoltageCurrentPower( core.GetParentComponent() ).setVisible( true ) );
+        uipButton.addActionListener( e -> new VoltageCurrentPower( core ).setVisible( true ) );
 
         var voltageDividerButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.voltage-divider" ) );
-        voltageDividerButton.addActionListener( e -> new VoltageDivider( core.GetParentComponent() ).setVisible( true ) );
+        voltageDividerButton.addActionListener( e -> new VoltageDivider( core ).setVisible( true ) );
 
         var radiatorParametersButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.radiator-parameters" ) );
-        radiatorParametersButton.addActionListener( e -> new Radiator( core.GetParentComponent() ).setVisible( true ) );
+        radiatorParametersButton.addActionListener( e -> new Radiator( core ).setVisible( true ) );
 
         var coilInductanceButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.coil-inductance" ) );
-        coilInductanceButton.addActionListener( e -> new Coils( core.GetParentComponent() ).setVisible( true ) );
+        coilInductanceButton.addActionListener( e -> new Coils( core ).setVisible( true ) );
 
         var closestESeriesValueButton = addButtonToPanel( tabCalculate, strings.getString( "plugin.tab.calculate.closest-e-series-value" ) );
-        closestESeriesValueButton.addActionListener( e -> new ESeries( core.GetParentComponent() ).setVisible( true ) );
+        closestESeriesValueButton.addActionListener( e -> new ESeries( core ).setVisible( true ) );
 
-        var tabConvert = core.GetTabByName( strings.getString( "plugin.tab.convert" ) );
+        var tabConvert = core.getTabByName( strings.getString( "plugin.tab.convert" ) );
 
         var frequencyPeriodButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.frequency-period" ) );
-        frequencyPeriodButton.addActionListener( e -> new FrequencyPeriod( core.GetParentComponent() ).setVisible( true ) );
+        frequencyPeriodButton.addActionListener( e -> new FrequencyPeriod( core ).setVisible( true ) );
 
         var wattsDbmButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.watts-dbm" ) );
-        wattsDbmButton.addActionListener( e -> new WattDbm( core.GetParentComponent() ).setVisible( true ) );
+        wattsDbmButton.addActionListener( e -> new WattDbm( core ).setVisible( true ) );
 
         var orderOfMagnitudeButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.order-of-magnitude" ) );
-        orderOfMagnitudeButton.addActionListener( e -> new OrderOfMagnitude( core.GetParentComponent() ).setVisible( true ) );
+        orderOfMagnitudeButton.addActionListener( e -> new OrderOfMagnitude( core ).setVisible( true ) );
 
         var numericalSystemsButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.numerical-systems" ) );
-        numericalSystemsButton.addActionListener( e -> new NumericalSystems( core.GetParentComponent() ).setVisible( true ) );
+        numericalSystemsButton.addActionListener( e -> new NumericalSystems( core ).setVisible( true ) );
 
         var barCodesButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.bar-codes" ) );
-        barCodesButton.addActionListener( e -> new BarCodes( core.GetParentComponent() ).setVisible( true ) );
+        barCodesButton.addActionListener( e -> new BarCodes( core ).setVisible( true ) );
 
         var milCodeButton = addButtonToPanel( tabConvert, strings.getString( "plugin.tab.convert.mil-code" ) );
-        milCodeButton.addActionListener( e -> new Mil( core.GetParentComponent() ).setVisible( true ) );
+        milCodeButton.addActionListener( e -> new Mil( core ).setVisible( true ) );
 
-        var tabCircuits = core.GetTabByName( strings.getString( "plugin.tab.circuits" ) );
+        var tabCircuits = core.getTabByName( strings.getString( "plugin.tab.circuits" ) );
 
         var opAmpCircuitsButton = addButtonToPanel( tabCircuits, strings.getString( "plugin.tab.circuits.op-amp-circuits" ) );
-        opAmpCircuitsButton.addActionListener( e -> new OpAmps( core.GetParentComponent() ).setVisible( true ) );
+        opAmpCircuitsButton.addActionListener( e -> new OpAmps( core ).setVisible( true ) );
 
         var lm3xxCircuitsButton = addButtonToPanel( tabCircuits, strings.getString( "plugin.tab.circuits.lm3xx-circuits" ) );
-        lm3xxCircuitsButton.addActionListener( e -> new LM3xx( core.GetParentComponent() ).setVisible( true ) );
+        lm3xxCircuitsButton.addActionListener( e -> new LM3xx( core ).setVisible( true ) );
 
         var ne555CircuitsButton = addButtonToPanel( tabCircuits, strings.getString( "plugin.tab.circuits.ne555-circuits" ) );
-        ne555CircuitsButton.addActionListener( e -> new NE555( core.GetParentComponent() ).setVisible( true ) );
+        ne555CircuitsButton.addActionListener( e -> new NE555( core ).setVisible( true ) );
 
-        var tabMicrocontrollers = core.GetTabByName( strings.getString( "plugin.tab.microcontrollers" ) );
+        var tabMicrocontrollers = core.getTabByName( strings.getString( "plugin.tab.microcontrollers" ) );
 
         var avrCalculatorsButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.avr-calculators" ) );
-        avrCalculatorsButton.addActionListener( e -> new AvrCalc( core.GetParentComponent() ).setVisible( true ) );
+        avrCalculatorsButton.addActionListener( e -> new AvrCalc( core ).setVisible( true ) );
 
         var bitmapFontGeneratorButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.bitmap-font-generator" ) );
-        bitmapFontGeneratorButton.addActionListener( e -> new FontGen( core.GetParentComponent() ).setVisible( true ) );
+        bitmapFontGeneratorButton.addActionListener( e -> new FontGen( core ).setVisible( true ) );
 
         var sevenSegmentCharacterGeneratorButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.seven-segment-character-generator" ) );
-        sevenSegmentCharacterGeneratorButton.addActionListener( e -> new _7SegGen( core.GetParentComponent() ).setVisible( true ) );
+        sevenSegmentCharacterGeneratorButton.addActionListener( e -> new _7SegGen( core ).setVisible( true ) );
 
         var graphicalDisplayImageGeneratorButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.graphical-display-image-generator" ) );
-        graphicalDisplayImageGeneratorButton.addActionListener( e -> new GraphLcdPict( core.GetParentComponent() ).setVisible( true ) );
+        graphicalDisplayImageGeneratorButton.addActionListener( e -> new GraphLcdPict( core ).setVisible( true ) );
 
         var hdCharacterGeneratorButton = addButtonToPanel( tabMicrocontrollers, strings.getString( "plugin.tab.microcontrollers.hd44780-character-generator-generator" ) );
-        hdCharacterGeneratorButton.addActionListener( e -> new HD44780CharGen( core.GetParentComponent() ).setVisible( true ) );
+        hdCharacterGeneratorButton.addActionListener( e -> new HD44780CharGen( core ).setVisible( true ) );
 
         return true;
     }

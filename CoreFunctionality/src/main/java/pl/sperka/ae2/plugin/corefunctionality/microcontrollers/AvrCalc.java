@@ -2,6 +2,7 @@ package pl.sperka.ae2.plugin.corefunctionality.microcontrollers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -33,7 +34,7 @@ public class AvrCalc extends javax.swing.JFrame {
     private javax.swing.JTextField jtfUartBaud;
     private javax.swing.JTextField jtfUartFosc;
 
-    public AvrCalc( Component parent ) {
+    public AvrCalc( ICore core ) {
         initComponents();
         jtTimIntResult.setDefaultRenderer( String.class, new TimIntCellRenderer() );
         DefaultTableModel model = new DefaultTableModel() {
@@ -62,7 +63,8 @@ public class AvrCalc extends javax.swing.JFrame {
         modelUart.addColumn( strings.getString( "avr-calc.error" ) );
         showUartData();
 
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

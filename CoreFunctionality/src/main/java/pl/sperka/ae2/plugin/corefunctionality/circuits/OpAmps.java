@@ -2,9 +2,9 @@ package pl.sperka.ae2.plugin.corefunctionality.circuits;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,7 +23,7 @@ public class OpAmps extends javax.swing.JFrame {
     private javax.swing.JTextField jtWzno;
     private javax.swing.JTextField jtWzod;
 
-    public OpAmps( Component parent ) {
+    public OpAmps( ICore core ) {
         initComponents();
         URL imgURL1 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/oanieodwr.jpg" );
         ImageIcon icon1 = new ImageIcon( imgURL1 );
@@ -39,7 +39,8 @@ public class OpAmps extends javax.swing.JFrame {
         jpPict2.add( label2 );
         label2.repaint();
 
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void CalculateNonInverting() {

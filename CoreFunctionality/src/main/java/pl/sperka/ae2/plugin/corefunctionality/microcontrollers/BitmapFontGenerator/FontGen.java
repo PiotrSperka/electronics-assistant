@@ -2,6 +2,7 @@ package pl.sperka.ae2.plugin.corefunctionality.microcontrollers.BitmapFontGenera
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -29,10 +30,11 @@ public class FontGen extends javax.swing.JFrame {
     private javax.swing.JTextArea jtaString;
     private javax.swing.JTextArea jtaWynik;
 
-    public FontGen( Component parent ) {
+    public FontGen( ICore core ) {
         initComponents();
         jtaString.setFont( fc.getSelectedFont() );
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

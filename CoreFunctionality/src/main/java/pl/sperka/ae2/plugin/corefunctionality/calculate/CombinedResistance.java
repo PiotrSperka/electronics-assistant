@@ -6,8 +6,8 @@ package pl.sperka.ae2.plugin.corefunctionality.calculate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
-import java.awt.*;
 import java.util.ResourceBundle;
 
 /**
@@ -80,11 +80,12 @@ public class CombinedResistance extends javax.swing.JFrame {
     /**
      * Creates new form RezZast
      */
-    public CombinedResistance( Component parent ) {
+    public CombinedResistance( ICore core ) {
         initComponents();
         rbSzer2MouseClicked( null );
         rbRown2MouseClicked( null );
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     /**

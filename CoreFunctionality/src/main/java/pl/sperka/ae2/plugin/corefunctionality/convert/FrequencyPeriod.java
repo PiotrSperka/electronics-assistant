@@ -6,8 +6,8 @@ package pl.sperka.ae2.plugin.corefunctionality.convert;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
-import java.awt.*;
 import java.util.ResourceBundle;
 
 /**
@@ -24,9 +24,10 @@ public class FrequencyPeriod extends javax.swing.JFrame {
     private javax.swing.JTextField txtCzestotliwosc;
     private javax.swing.JTextField txtOkres;
 
-    public FrequencyPeriod( Component parent ) {
+    public FrequencyPeriod( ICore core ) {
         initComponents();
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

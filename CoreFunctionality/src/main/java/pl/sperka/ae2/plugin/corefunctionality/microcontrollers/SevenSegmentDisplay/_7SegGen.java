@@ -2,6 +2,7 @@ package pl.sperka.ae2.plugin.corefunctionality.microcontrollers.SevenSegmentDisp
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,10 +31,11 @@ public class _7SegGen extends javax.swing.JFrame {
     private javax.swing.JTextArea jtaTable;
     private SevenSegmentDisplay ssd1;
 
-    public _7SegGen( Component parent ) {
+    public _7SegGen( ICore core ) {
         initComponents();
         jlInfo.setText( strings.getString( "seven-segment.click-to-change" ) );
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

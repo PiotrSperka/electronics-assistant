@@ -15,8 +15,8 @@ import java.util.ServiceLoader;
 
 public class PluginLoader {
     private final static Logger logger = LogManager.getLogger( PluginLoader.class );
-    private final ArrayList< IPlugin > loadedPlugins = new ArrayList<>();
     private final static PluginLoader PLUGIN_LOADER = new PluginLoader();
+    private final ArrayList< IPlugin > loadedPlugins = new ArrayList<>();
 
     public static PluginLoader getInstance() {
         return PLUGIN_LOADER;

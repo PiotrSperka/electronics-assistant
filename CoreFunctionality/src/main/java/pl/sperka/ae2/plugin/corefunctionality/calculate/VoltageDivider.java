@@ -6,9 +6,9 @@ package pl.sperka.ae2.plugin.corefunctionality.calculate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -27,7 +27,7 @@ public class VoltageDivider extends javax.swing.JFrame {
     private javax.swing.JTextField txtWej;
     private javax.swing.JTextField txtWyj;
 
-    public VoltageDivider( Component parent ) {
+    public VoltageDivider( ICore core ) {
         initComponents();
         ClassLoader cl = this.getClass().getClassLoader();
         URL url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/Dzielnik.jpg" );
@@ -35,7 +35,8 @@ public class VoltageDivider extends javax.swing.JFrame {
         JLabel label = new JLabel( icon );
         label.setSize( 120, 161 );
         panObrazek.add( label );
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

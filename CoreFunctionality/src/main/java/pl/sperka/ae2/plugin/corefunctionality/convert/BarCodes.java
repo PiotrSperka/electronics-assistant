@@ -6,6 +6,7 @@ package pl.sperka.ae2.plugin.corefunctionality.convert;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,12 +42,13 @@ public class BarCodes extends javax.swing.JFrame {
     private javax.swing.JPanel panKondRys;
     private javax.swing.JPanel panRezRys;
 
-    public BarCodes( Component parent ) {
+    public BarCodes( ICore core ) {
         initComponents();
         CalculateResistor();
         CalculateCoil();
         CalculateCapacitor();
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private Color getColor( String nazwa ) {

@@ -2,9 +2,9 @@ package pl.sperka.ae2.plugin.corefunctionality.calculate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,7 +32,7 @@ public class Coils extends javax.swing.JFrame {
     private javax.swing.JTextField jtcpwl;
     private javax.swing.JTextField jtcpwn;
 
-    public Coils( Component parent ) {
+    public Coils( ICore core ) {
         initComponents();
         URL imgURL1 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/cewpj.jpg" );
         ImageIcon icon1 = new ImageIcon( imgURL1 );
@@ -48,7 +48,8 @@ public class Coils extends javax.swing.JFrame {
         jpPictcpw.add( label2 );
         label2.repaint();
 
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

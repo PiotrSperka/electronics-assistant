@@ -6,9 +6,9 @@ package pl.sperka.ae2.plugin.corefunctionality.circuits;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,7 +62,7 @@ public class NE555 extends javax.swing.JFrame {
     private javax.swing.JTextField txtMonImp;
     private javax.swing.JTextField txtMonR1;
 
-    public NE555( Component parent ) {
+    public NE555( ICore core ) {
         initComponents();
         ClassLoader cl = this.getClass().getClassLoader();
         URL url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/ne555mon.jpg" );
@@ -89,7 +89,8 @@ public class NE555 extends javax.swing.JFrame {
         ne555ast3.setSize( 182, 200 );
         jpAst3Pict.add( ne555ast3 );
 
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

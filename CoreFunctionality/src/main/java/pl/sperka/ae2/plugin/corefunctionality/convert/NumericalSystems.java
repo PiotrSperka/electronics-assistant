@@ -6,8 +6,8 @@ package pl.sperka.ae2.plugin.corefunctionality.convert;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
-import java.awt.*;
 import java.util.ResourceBundle;
 
 /**
@@ -21,9 +21,10 @@ public class NumericalSystems extends javax.swing.JFrame {
     private javax.swing.JTextField txtHex;
     private javax.swing.JTextField txtOct;
 
-    public NumericalSystems( Component parent ) {
+    public NumericalSystems( ICore core ) {
         initComponents();
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void initComponents() {

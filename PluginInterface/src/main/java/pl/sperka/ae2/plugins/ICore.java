@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public interface ICore {
-    public JPanel GetTabByName( String name );
-    public JMenuBar GetMenuBar();
-    public Component GetParentComponent();
+    JPanel getTabByName( String name );
+    JMenuBar getTopMenuBar();
+    Component getParentComponent();
+    Image getIcon();
 }

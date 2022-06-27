@@ -2,6 +2,7 @@ package pl.sperka.ae2.plugin.corefunctionality.microcontrollers.GraphicalLcdImag
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugins.ICore;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -39,9 +40,10 @@ public class GraphLcdPict extends javax.swing.JFrame {
     private javax.swing.JTextField jtfLcdHeight;
     private javax.swing.JTextField jtfLcdWidth;
 
-    public GraphLcdPict( Component parent ) {
+    public GraphLcdPict( ICore core ) {
         initComponents();
-        setLocationRelativeTo( parent );
+        setLocationRelativeTo( core.getParentComponent() );
+        setIconImage( core.getIcon() );
     }
 
     private void toGrayscale( BufferedImage bi ) {
