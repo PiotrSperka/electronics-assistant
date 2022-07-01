@@ -48,7 +48,6 @@ I've deleted modules that were not useful anymore (for example very outdated mic
 - Generate custom characters for HD44780 display
 
 ## TODO list
-- Icons
 - Refactoring
 - Automatic update module
 - New functionalities (?)

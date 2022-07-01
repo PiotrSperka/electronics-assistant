@@ -30,7 +30,7 @@ public class VoltageDivider extends javax.swing.JFrame {
     public VoltageDivider( ICore core ) {
         initComponents();
         ClassLoader cl = this.getClass().getClassLoader();
-        URL url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/Dzielnik.jpg" );
+        URL url = cl.getResource( "pl/sperka/ae2/plugin/images/Dzielnik.jpg" );
         Icon icon = new ImageIcon( url );
         JLabel label = new JLabel( icon );
         label.setSize( 120, 161 );

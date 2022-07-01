@@ -34,14 +34,14 @@ public class Coils extends javax.swing.JFrame {
 
     public Coils( ICore core ) {
         initComponents();
-        URL imgURL1 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/cewpj.jpg" );
+        URL imgURL1 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/cewpj.jpg" );
         ImageIcon icon1 = new ImageIcon( imgURL1 );
         JLabel label1 = new JLabel( icon1 );
         label1.setSize( 100, 185 );
         jpPictcpj.add( label1 );
         label1.repaint();
 
-        URL imgURL2 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/cewpw.jpg" );
+        URL imgURL2 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/cewpw.jpg" );
         ImageIcon icon2 = new ImageIcon( imgURL2 );
         JLabel label2 = new JLabel( icon2 );
         label2.setSize( 250, 296 );

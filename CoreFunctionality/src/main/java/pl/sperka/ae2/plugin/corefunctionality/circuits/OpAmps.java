@@ -25,14 +25,14 @@ public class OpAmps extends javax.swing.JFrame {
 
     public OpAmps( ICore core ) {
         initComponents();
-        URL imgURL1 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/oanieodwr.jpg" );
+        URL imgURL1 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/oanieodwr.jpg" );
         ImageIcon icon1 = new ImageIcon( imgURL1 );
         JLabel label1 = new JLabel( icon1 );
         label1.setSize( 200, 141 );
         jpPict1.add( label1 );
         label1.repaint();
 
-        URL imgURL2 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/oaodwr.jpg" );
+        URL imgURL2 = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/oaodwr.jpg" );
         ImageIcon icon2 = new ImageIcon( imgURL2 );
         JLabel label2 = new JLabel( icon2 );
         label2.setSize( 200, 149 );

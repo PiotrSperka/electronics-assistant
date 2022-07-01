@@ -65,25 +65,25 @@ public class NE555 extends javax.swing.JFrame {
     public NE555( ICore core ) {
         initComponents();
         ClassLoader cl = this.getClass().getClassLoader();
-        URL url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/ne555mon.jpg" );
+        URL url = cl.getResource( "pl/sperka/ae2/plugin/images/ne555mon.jpg" );
         Icon icon = new ImageIcon( url );
         JLabel ne555mon = new JLabel( icon );
         ne555mon.setSize( 200, 190 );
         jpMonPict.add( ne555mon );
 
-        url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/ne555ast1.jpg" );
+        url = cl.getResource( "pl/sperka/ae2/plugin/images/ne555ast1.jpg" );
         icon = new ImageIcon( url );
         JLabel ne555ast1 = new JLabel( icon );
         ne555ast1.setSize( 200, 198 );
         jpAst1Pict.add( ne555ast1 );
 
-        url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/ne555ast2.jpg" );
+        url = cl.getResource( "pl/sperka/ae2/plugin/images/ne555ast2.jpg" );
         icon = new ImageIcon( url );
         JLabel ne555ast2 = new JLabel( icon );
         ne555ast2.setSize( 190, 206 );
         jpAst2Pict.add( ne555ast2 );
 
-        url = cl.getResource( "pl/sperka/ae2/plugin/oldclasses/images/ne555ast3.jpg" );
+        url = cl.getResource( "pl/sperka/ae2/plugin/images/ne555ast3.jpg" );
         icon = new ImageIcon( url );
         JLabel ne555ast3 = new JLabel( icon );
         ne555ast3.setSize( 182, 200 );

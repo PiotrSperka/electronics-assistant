@@ -30,7 +30,7 @@ public class LM3xx extends javax.swing.JFrame {
 
     public LM3xx( ICore core ) {
         initComponents();
-        URL imgURL = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/lm317.jpg" );
+        URL imgURL = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/lm317.jpg" );
         ImageIcon icon = new ImageIcon( imgURL );
         JLabel label = new JLabel( icon );
         label.setSize( 200, 137 );
@@ -115,7 +115,7 @@ public class LM3xx extends javax.swing.JFrame {
     private void rbLM317ItemStateChanged( java.awt.event.ItemEvent evt ) {
         jpPict.removeAll();
         jpPict.repaint();
-        URL imgURL = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/lm317.jpg" );
+        URL imgURL = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/lm317.jpg" );
         ImageIcon icon = new ImageIcon( imgURL );
         JLabel label = new JLabel( icon );
         label.setSize( 200, 137 );
@@ -128,7 +128,7 @@ public class LM3xx extends javax.swing.JFrame {
     private void rbLM337ItemStateChanged( java.awt.event.ItemEvent evt ) {
         jpPict.removeAll();
         jpPict.repaint();
-        URL imgURL = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/oldclasses/images/lm337.jpg" );
+        URL imgURL = getClass().getClassLoader().getResource( "pl/sperka/ae2/plugin/images/lm337.jpg" );
         ImageIcon icon = new ImageIcon( imgURL );
         JLabel label = new JLabel( icon );
         label.setSize( 200, 106 );
