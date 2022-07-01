@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CoreFunctionality:jar">
+    <output-path>$PROJECT_DIR$/</output-path>
+    <root id="archive" name="CoreFunctionality.jar">
+      <element id="module-output" name="CoreFunctionality" />
+      <element id="module-output" name="PluginInterface" />
+    </root>
+  </artifact>
+</component>
