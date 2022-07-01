@@ -39,7 +39,7 @@ public class PluginLoader {
                 logger.debug( "Plugin loaded: " + plugin.toString() );
                 if ( plugin.initialize( core ) ) loadedPlugins.add( plugin );
             }
-        } catch ( MalformedURLException ex ) {
+        } catch ( MalformedURLException | NullPointerException ex ) {
             logger.error( ex.getMessage(), ex );
             return false;
         }
