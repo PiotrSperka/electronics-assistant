@@ -10,7 +10,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ServiceLoader;
 
 public class PluginLoader {
@@ -29,15 +28,20 @@ public class PluginLoader {
 
             logger.debug( "Reading plugins from: " + pluginDirectory.getAbsolutePath() );
 
-            for ( File f : Objects.requireNonNull( pluginDirectory.listFiles() ) )
-                if ( f.getName().endsWith( ".jar" ) )
-                    pluginUrls.add( f.toURI().toURL() );
+            var filesList = pluginDirectory.listFiles();
+            if ( filesList != null ) {
+                for ( File f : filesList ) {
+                    if ( f.getName().endsWith( ".jar" ) ) {
+                        pluginUrls.add( f.toURI().toURL() );
+                    }
+                }
 
-            URLClassLoader ucl = new URLClassLoader( pluginUrls.toArray( new URL[0] ) );
-            ServiceLoader< ? extends IPlugin > sl = ServiceLoader.load( IPlugin.class, ucl );
-            for ( IPlugin plugin : sl ) {
-                logger.debug( "Plugin loaded: " + plugin.toString() );
-                if ( plugin.initialize( core ) ) loadedPlugins.add( plugin );
+                URLClassLoader ucl = new URLClassLoader( pluginUrls.toArray( new URL[0] ) );
+                ServiceLoader< ? extends IPlugin > sl = ServiceLoader.load( IPlugin.class, ucl );
+                for ( IPlugin plugin : sl ) {
+                    logger.debug( "Plugin loaded: " + plugin.toString() );
+                    if ( plugin.initialize( core ) ) loadedPlugins.add( plugin );
+                }
             }
         } catch ( MalformedURLException | NullPointerException ex ) {
             logger.error( ex.getMessage(), ex );

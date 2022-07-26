@@ -51,7 +51,6 @@ I've deleted modules that were not useful anymore (for example very outdated mic
 - Refactoring
 - Automatic update module
 - New functionalities (?)
-    - E series in led resistor, voltage divider, ...
     - 7 segment: 32 bit, add letters
     - Image generator: marlin images?, window resize...
     - Bitmap font: missing functions (greyed out)

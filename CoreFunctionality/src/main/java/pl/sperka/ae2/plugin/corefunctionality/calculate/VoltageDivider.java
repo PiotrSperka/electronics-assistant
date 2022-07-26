@@ -6,6 +6,8 @@ package pl.sperka.ae2.plugin.corefunctionality.calculate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugin.corefunctionality.common.ESeriesFinder;
+import pl.sperka.ae2.plugin.corefunctionality.common.ESeriesType;
 import pl.sperka.ae2.plugins.ICore;
 
 import javax.swing.*;
@@ -120,26 +122,32 @@ public class VoltageDivider extends javax.swing.JFrame {
     private void Calculate() {
         java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
         if ( !txtR2.getText().equals( "" ) && !txtWej.getText().equals( "" ) && !txtWyj.getText().equals( "" ) ) {
-            float Uwej = 0, Uwyj = 0, R2 = 0;
-            double R1 = 0;
+            double Uwej = 0, Uwyj = 0, R2 = 0;
             try {
                 Uwej = nf.parse( txtWej.getText() ).floatValue();
                 Uwyj = nf.parse( txtWyj.getText() ).floatValue();
                 R2 = nf.parse( txtR2.getText() ).floatValue();
             } catch ( Exception ignored ) {
             }
+
             if ( Objects.equals( cmbR2.getSelectedItem(), "kOhm" ) ) R2 *= 1000;
             if ( Objects.equals( cmbR2.getSelectedItem(), "MOhm" ) ) R2 *= 1000000;
-            R1 = R2 * ( Uwej / Uwyj ) - R2;
+
+            double R1 = R2 * ( Uwej / Uwyj ) - R2;
+            double E24R1 = ESeriesFinder.findValue( R1, ESeriesType.E24 );
+            double E24Output = Uwej * ( R2 / ( E24R1 + R2 ) );
+            E24Output = Math.round( E24Output * 10 );
+            E24R1 = Math.round( E24R1 * 10 );
             R1 = Math.round( R1 * 10 );
+
             if ( R1 < 0 ) {
                 lblR1.setText( strings.getString( "voltage-divider.input-smaller-than-output" ) );
             } else if ( R1 < 10000 ) {
-                lblR1.setText( "R1: " + nf.format( R1 / 10 ) + " Ohm" );
+                lblR1.setText( "R1: " + nf.format( R1 / 10 ) + " Ohm (E24: " + nf.format( E24R1 / 10 ) + " Ohm; " + nf.format( E24Output / 10 ) + "V)" );
             } else if ( R1 < 10000000 ) {
-                lblR1.setText( "R1: " + nf.format( R1 / 10000 ) + " kOhm" );
+                lblR1.setText( "R1: " + nf.format( R1 / 10000 ) + " kOhm (E24: " + nf.format( E24R1 / 10000 ) + " kOhm; " + nf.format( E24Output / 10 ) + "V)" );
             } else {
-                lblR1.setText( "R1: " + nf.format( R1 / 10000000 ) + " MOhm" );
+                lblR1.setText( "R1: " + nf.format( R1 / 10000000 ) + " MOhm (E24: " + nf.format( E24R1 / 10000000 ) + " MOhm; " + nf.format( E24Output / 10 ) + "V)" );
             }
         }
     }

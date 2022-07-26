@@ -6,6 +6,8 @@ package pl.sperka.ae2.plugin.corefunctionality.calculate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import pl.sperka.ae2.plugin.corefunctionality.common.ESeriesFinder;
+import pl.sperka.ae2.plugin.corefunctionality.common.ESeriesType;
 import pl.sperka.ae2.plugins.ICore;
 
 import java.text.DecimalFormatSymbols;
@@ -140,7 +142,7 @@ public class ResistorForLed extends javax.swing.JFrame {
 
     private void Calculate() {
         if ( ( !txtUled.getText().equals( "" ) ) && ( !txtIled.getText().equals( "" ) ) && ( !txtUzas.getText().equals( "" ) ) ) {
-            float Uled = 0, Iled = 0, Uzas = 0, R = 0, Prez = 0;
+            float Uled = 0, Iled = 0, Uzas = 0;
             java.text.NumberFormat nf = java.text.NumberFormat.getInstance();
             try {
                 Uled = nf.parse( txtUled.getText() ).floatValue();
@@ -149,19 +151,31 @@ public class ResistorForLed extends javax.swing.JFrame {
             } catch ( Exception ignored ) {
             }
 
-            R = ( Uzas - Uled ) / Iled;
-            Prez = R * Iled * Iled * 100;
-            Prez = Math.round( Prez );
+            if ( Iled == 0 ) {
+                return;
+            }
+
+            double R = ( Uzas - Uled ) / Iled;
+            double Prez = Math.round( R * Iled * Iled * 100 );
+            double closestE24 = ESeriesFinder.findValue( R, ESeriesType.E24 );
+            double e24Current = ( Uzas - Uled ) / closestE24;
+            double e24Power = Math.round( closestE24 * e24Current * e24Current * 100 );
+
+            closestE24 = Math.round( closestE24 * 10 );
+            e24Current = Math.round( e24Current * 10000 );
             R = Math.round( R * 10 );
 
             if ( R < 0 ) {
                 lblRez.setText( "Uzas < Uled !" );
             } else if ( R < 10000 ) {
-                lblRez.setText( strings.getString( "resistor-for-led.resistor" ) + nf.format( R / 10 ) + " Ohm/" + nf.format( Prez / 100 ) + " W" );
+                lblRez.setText( "<html><body>" + strings.getString( "resistor-for-led.resistor" ) + nf.format( R / 10 ) + " Ohm/" + nf.format( Prez / 100 ) + " W<br>E24: "
+                        + nf.format( closestE24 / 10 ) + " Ohm/" + nf.format( e24Power / 100 ) + " W @ " + nf.format( e24Current / 10 ) + " mA</body></html>" );
             } else if ( R < 10000000 ) {
-                lblRez.setText( strings.getString( "resistor-for-led.resistor" ) + nf.format( R / 10000 ) + " kOhm/" + nf.format( Prez / 100 ) + " W" );
+                lblRez.setText( "<html><body>" + strings.getString( "resistor-for-led.resistor" ) + nf.format( R / 10000 ) + " kOhm/" + nf.format( Prez / 100 ) + " W<br>E24: "
+                        + nf.format( closestE24 / 10000 ) + " kOhm/" + nf.format( e24Power / 100 ) + " W @ " + nf.format( e24Current / 10 ) + " mA</body></html>" );
             } else {
-                lblRez.setText( strings.getString( "resistor-for-led.resistor" ) + nf.format( R / 10000000 ) + " MOhm/" + nf.format( Prez / 100 ) + " W" );
+                lblRez.setText( "<html><body>" + strings.getString( "resistor-for-led.resistor" ) + nf.format( R / 10000000 ) + " MOhm/" + nf.format( Prez / 100 ) + " W<br>E24: "
+                        + nf.format( closestE24 / 10000000 ) + " MOhm/" + nf.format( e24Power / 100 ) + " W @ " + nf.format( e24Current / 10 ) + " mA</body></html>" );
             }
         }
     }
